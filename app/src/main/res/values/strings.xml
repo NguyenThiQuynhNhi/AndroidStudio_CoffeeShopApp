@@ -4,8 +4,4 @@
     <string name="choose_your_favorite_coffee">Choose your Favorite Coffee</string>
     <string name="get_started">Get Started</string>
     <string name="search_anything">Search anything...</string>
-    <string name="popular_coffees">Popular coffees</string>
-    <string name="category">Category</string>
-    <string name="name">Name</string>
-    <string name="see_all">See all</string>
 </resources>

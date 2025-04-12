@@ -1,16 +1,16 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "com.midterm22nh12.androidstudio_coffeeshopapp"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.midterm22nh12.androidstudio_coffeeshopapp"
-        minSdk = 23
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -27,53 +27,27 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
-    kotlinOptions {
-        jvmTarget = "11"
+    buildFeatures{
+        viewBinding=true
     }
 
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    // AndroidX
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.activity:activity-ktx:1.8.0")
 
-    // Material Design
-    implementation("com.google.android.material:material:1.10.0")
-
-    // Firebase Realtime Database
-    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
-
-    // Glide (image loading)
-    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.appcompat)
+    implementation(libs.material)
     implementation(libs.activity)
-    implementation(libs.firebase.auth)
-    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+    implementation(libs.constraintlayout)
+    implementation(libs.firebase.database)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 
-    // Gson (JSON parsing)
-    implementation("com.google.code.gson:gson:2.10.1")
-
-    implementation ("com.github.TutorialsAndroid:GButton:v1.0.19")
-    implementation ("com.google.android.gms:play-services-auth:20.4.0")
-
-    // Unit testing
-    testImplementation("junit:junit:4.13.2")
-
-    // Android Instrumented testing
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    implementation("de.hdodenhof:circleimageview:3.1.0")
-
+    implementation(libs.glide)
+    implementation(libs.gson)
 }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidStudio_CoffeeShopApp</string>
+    <string name="the_best_grain_the_finest_roast">The best grain the finest roast</string>
+    <string name="choose_your_favorite_coffee">Choose your Favorite Coffee</string>
+    <string name="get_started">Get Started</string>
+    <string name="search_anything">Search anything...</string>
 </resources>

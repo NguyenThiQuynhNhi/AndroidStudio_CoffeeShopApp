@@ -16,7 +16,7 @@
             android:name=".Activity.SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".com.midterm22nh12.androidstudio_coffeeshopapp.Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

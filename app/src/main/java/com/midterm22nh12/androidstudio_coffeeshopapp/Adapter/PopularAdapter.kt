@@ -15,7 +15,6 @@ import com.midterm22nh12.androidstudio_coffeeshopapp.databinding.ViewholderPopul
 class PopularAdapter(private val items: MutableList<ItemsModel>) :
     RecyclerView.Adapter<PopularAdapter.Viewholder>() {
         lateinit var context: Context
-
         class Viewholder(val binding:ViewholderPopularBinding):RecyclerView.ViewHolder(binding.root)
 
 

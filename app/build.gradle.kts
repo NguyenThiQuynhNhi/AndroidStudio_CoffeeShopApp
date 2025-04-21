@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.midterm22nh12.androidstudio_coffeeshopapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.midterm22nh12.androidstudio_coffeeshopapp"

@@ -1,10 +1,12 @@
 package com.midterm22nh12.androidstudio_coffeeshopapp.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.midterm22nh12.androidstudio_coffeeshopapp.Activity.DetailActivity
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
 import com.midterm22nh12.androidstudio_coffeeshopapp.databinding.ViewholderPopularBinding
 
@@ -28,6 +30,11 @@ class PopularAdapter(var items:MutableList<ItemsModel>):
             .load(items[position].picUrl[0])
             .into(holder.binding.pic)
 
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("object", items[position])
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int =items.size

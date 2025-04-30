@@ -1,5 +1,6 @@
 package com.midterm22nh12.androidstudio_coffeeshopapp.com.midterm22nh12.androidstudio_coffeeshopapp.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.ComponentActivity
@@ -7,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.midterm22nh12.androidstudio_coffeeshopapp.Activity.CartActivity
 import com.midterm22nh12.androidstudio_coffeeshopapp.Adapter.CategoryAdapter
 import com.midterm22nh12.androidstudio_coffeeshopapp.Adapter.PopularAdapter
 import com.midterm22nh12.androidstudio_coffeeshopapp.databinding.ActivityMainBinding
@@ -23,6 +25,13 @@ class MainActivity : ComponentActivity() {
         initBanner()
         initcategory()
         initPopular()
+        initBottomMenu()
+    }
+
+    private fun initBottomMenu() {
+        binding.cartBtn.setOnClickListener{
+            startActivity(Intent(this,CartActivity::class.java))
+        }
     }
 
     private fun initBanner() {

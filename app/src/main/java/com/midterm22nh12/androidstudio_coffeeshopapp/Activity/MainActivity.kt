@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
                     .load(R.drawable.banner) // ảnh default_banner trong drawable
                     .into(binding.banner)
             }
-
             binding.progressBarBanner.visibility = View.GONE
         }
+        viewModel.loadBanner()
     }
 
 

@@ -17,20 +17,7 @@ class CategoryAdapter(val items: MutableList<CategoryModel>) :
     private var lastSelectedPosition = -1
 
     inner class ViewHolder(val binding: ViewholderCategoryBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: CategoryModel, isSelected: Boolean) {
-            binding.tilteCat.text = item.title // Assuming 'title' is a field in CategoryModel
-
-            // Update UI based on selection state
-            if (isSelected) {
-                binding.tilteCat.setBackgroundResource(R.drawable.dark_brown_bg)
-                binding.tilteCat.setTextColor(ContextCompat.getColor(context, R.color.white))
-            } else {
-                binding.tilteCat.setBackgroundResource(R.drawable.white_bg)
-                binding.tilteCat.setTextColor(ContextCompat.getColor(context, R.color.darkBrown))
-            }
-        }
-    }
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
@@ -40,23 +27,22 @@ class CategoryAdapter(val items: MutableList<CategoryModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-        val isSelected = selectedPosition == position
-        holder.bind(item, isSelected)
+        holder.binding.tilteCat.text=item.title
 
-        // Set click listener
         holder.binding.root.setOnClickListener {
-            // Use holder.getAdapterPosition() to get the current position
-            val currentPosition = holder.getAdapterPosition()
-            if (currentPosition != RecyclerView.NO_POSITION) { // Check for valid position
-                lastSelectedPosition = selectedPosition
-                selectedPosition = currentPosition
-                // Notify changes for both the previously selected and newly selected items
-                if (lastSelectedPosition != RecyclerView.NO_POSITION) {
-                    notifyItemChanged(lastSelectedPosition)
-                }
-                notifyItemChanged(selectedPosition)
-            }
+            lastSelectedPosition=selectedPosition
+            selectedPosition=position
+            notifyItemChanged(lastSelectedPosition)
+            notifyItemChanged(selectedPosition)
         }
+        if(selectedPosition==position){
+            holder.binding.tilteCat.setBackgroundResource(R.drawable.dark_brown_bg)
+            holder.binding.tilteCat.setTextColor(context.resources.getColor(R.color.white))
+        }else{
+            holder.binding.tilteCat.setBackgroundResource(R.drawable.white_bg)
+            holder.binding.tilteCat.setTextColor(context.resources.getColor(R.color.darkBrown))
+        }
+
     }
 
     override fun getItemCount(): Int = items.size

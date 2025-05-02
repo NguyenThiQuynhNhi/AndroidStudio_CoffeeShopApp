@@ -3,7 +3,7 @@ package com.midterm22nh12.androidstudio_coffeeshopapp.Adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+
 import androidx.recyclerview.widget.RecyclerView
 import com.midterm22nh12.androidstudio_coffeeshopapp.R
 import com.midterm22nh12.androidstudio_coffeeshopapp.com.midterm22nh12.androidstudio_coffeeshopapp.Domain.CategoryModel
@@ -42,7 +42,6 @@ class CategoryAdapter(val items: MutableList<CategoryModel>) :
             holder.binding.tilteCat.setBackgroundResource(R.drawable.white_bg)
             holder.binding.tilteCat.setTextColor(context.resources.getColor(R.color.darkBrown))
         }
-
     }
 
     override fun getItemCount(): Int = items.size

@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         initBanner()
         initcategory()
         initPopular()
@@ -30,25 +31,14 @@ class MainActivity : AppCompatActivity() {
     private fun initBanner() {
         binding.progressBarBanner.visibility = View.VISIBLE
 
-        viewModel.loadBanner().observeForever { list ->
-            val bannerItem = list?.firstOrNull()
-
-            if (bannerItem != null && !bannerItem.url.isNullOrEmpty()) {
-                Glide.with(binding.banner.context)
-                    .load(bannerItem.url)
-                    .into(binding.banner)
-            } else {
-                // Nếu không có banner hoặc url rỗng, bạn có thể hiện 1 ảnh mặc định
-                Glide.with(binding.banner.context)
-                    .load(R.drawable.banner) // ảnh default_banner trong drawable
-                    .into(binding.banner)
-            }
+        viewModel.loadBanner().observeForever {
+            Glide.with(this@MainActivity)
+                .load(it[0].url)
+                .into(binding.banner)
             binding.progressBarBanner.visibility = View.GONE
         }
         viewModel.loadBanner()
     }
-
-
 
     private fun initcategory(){
         binding.progressBarCategory.visibility=View.VISIBLE
@@ -58,7 +48,6 @@ class MainActivity : AppCompatActivity() {
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
-
             binding.recyclerViewCategory.adapter= CategoryAdapter(it)
             binding.progressBarCategory.visibility=View.GONE
         }

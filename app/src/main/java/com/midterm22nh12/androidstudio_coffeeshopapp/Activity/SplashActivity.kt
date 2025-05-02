@@ -9,6 +9,7 @@ import com.midterm22nh12.androidstudio_coffeeshopapp.databinding.ActivitySplashB
 class SplashActivity : AppCompatActivity() {
 
     lateinit var binding:ActivitySplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

@@ -33,20 +33,20 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun initCartList() {
-//        binding.apply {
-//            listView.layoutManager=
-//                LinearLayoutManager(this@CartActivity, LinearLayoutManager.VERTICAL, false)
-//            listView.adapter=CartAdapter(
-//                managmentCart.getListCart(),
-//                this@CartActivity,
-//                object :ChangeNumberItemsListener{
-//                    override fun onChanged() {
-//                        calculateCart()
-//                    }
-//
-//                }
-//            )
-//        }
+        binding.apply {
+            cartView.layoutManager=
+                LinearLayoutManager(this@CartActivity, LinearLayoutManager.VERTICAL, false)
+            cartView.adapter=CartAdapter(
+                managmentCart.getListCart(),
+                this@CartActivity,
+                object :ChangeNumberItemsListener{
+                    override fun onChanged() {
+                        calculateCart()
+                    }
+
+                }
+            )
+        }
     }
 
     private fun setVariable() {

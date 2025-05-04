@@ -62,9 +62,9 @@ class MainRepository {
         return listData
     }
 
-    fun loadPopular(): LiveData<MutableList<ItemsModel>> {
+    fun loadAllCoffee(): LiveData<MutableList<ItemsModel>> {
         val listData = MutableLiveData<MutableList<ItemsModel>>()
-        val ref = firebaseDatabase.getReference("Popular")
+        val ref = firebaseDatabase.getReference("Items")
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -77,7 +77,6 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Xử lý lỗi: in thông báo lỗi và trả về danh sách rỗng
                 println("Firebase error: ${error.message}")
                 listData.value = mutableListOf()
             }

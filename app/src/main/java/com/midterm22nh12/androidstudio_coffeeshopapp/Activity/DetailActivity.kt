@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
 import com.midterm22nh12.androidstudio_coffeeshopapp.Helper.ManagmentCart
 import com.midterm22nh12.androidstudio_coffeeshopapp.R
-import com.midterm22nh12.androidstudio_coffeeshopapp.com.midterm22nh12.androidstudio_coffeeshopapp.Activity.MainActivity
+import com.midterm22nh12.androidstudio_coffeeshopapp.Activity.MainActivity
 import com.midterm22nh12.androidstudio_coffeeshopapp.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {

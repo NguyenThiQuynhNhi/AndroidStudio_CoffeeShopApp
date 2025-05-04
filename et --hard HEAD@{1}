@@ -1,0 +1,38 @@
+[33mf1a09ab[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mnhii[m[33m)[m HEAD@{0}: commit (merge): Merge remote-tracking branch 'origin/Ngocc' into nhii
+[33mfea501f[m HEAD@{1}: merge origin/finish: Merge made by the 'ort' strategy.
+[33m7f38bad[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{2}: merge master: Fast-forward
+[33m8b02fbf[m[33m ([m[1;31morigin/Nhii[m[33m)[m HEAD@{3}: checkout: moving from master to nhii
+[33m7f38bad[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{4}: checkout: moving from nhii to master
+[33m8b02fbf[m[33m ([m[1;31morigin/Nhii[m[33m)[m HEAD@{5}: checkout: moving from master to nhii
+[33m7f38bad[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{6}: pull: Fast-forward
+[33m59c518d[m HEAD@{7}: checkout: moving from Nhii to master
+[33m8b02fbf[m[33m ([m[1;31morigin/Nhii[m[33m)[m HEAD@{8}: commit: List of Items Backend: completed
+[33me27afd2[m HEAD@{9}: commit: List of Items UI: complete
+[33ma3408b4[m HEAD@{10}: commit: Item Detail Backend: complete
+[33m4d50323[m HEAD@{11}: checkout: moving from Nhii to Nhii
+[33m4d50323[m HEAD@{12}: commit: Item Detail UI: complete
+[33m1cd0244[m HEAD@{13}: commit: Item Detail UI: complete
+[33m59c518d[m HEAD@{14}: checkout: moving from master to Nhii
+[33m59c518d[m HEAD@{15}: checkout: moving from Nhii to master
+[33m5ce18a4[m HEAD@{16}: checkout: moving from master to Nhii
+[33m59c518d[m HEAD@{17}: commit: changeGitignore
+[33m5ce18a4[m HEAD@{18}: checkout: moving from nhii to master
+[33m5ce18a4[m HEAD@{19}: checkout: moving from master to nhii
+[33m5ce18a4[m HEAD@{20}: checkout: moving from master to master
+[33m5ce18a4[m HEAD@{21}: reset: moving to HEAD
+[33m5ce18a4[m HEAD@{22}: checkout: moving from nhii to master
+[33m86d9faa[m HEAD@{23}: commit: â
+[33m891d89b[m HEAD@{24}: commit: Remove .idea/gradle.xml
+[33m2bb2b7d[m HEAD@{25}: checkout: moving from master to nhii
+[33m5ce18a4[m HEAD@{26}: commit: changeAgpVersion
+[33m056fdce[m HEAD@{27}: rebase (finish): returning to refs/heads/master
+[33m056fdce[m HEAD@{28}: rebase (continue): LTDD - Dashboard Backend 2
+[33m0663b71[m HEAD@{29}: rebase (continue): LTDD - Dashboard Backend
+[33mc19aae6[m HEAD@{30}: rebase (pick): LTDĐ - Code tam thoi
+[33me101cf4[m HEAD@{31}: rebase (start): checkout refs/remotes/origin/Khanhh
+[33m12f31c6[m HEAD@{32}: rebase (abort): returning to refs/heads/master
+[33me101cf4[m HEAD@{33}: rebase (start): checkout refs/remotes/origin/Khanhh
+[33m12f31c6[m HEAD@{34}: rebase (finish): returning to refs/heads/master
+[33m12f31c6[m HEAD@{35}: rebase (start): checkout refs/remotes/origin/Ngocc
+[33m85fecfe[m HEAD@{36}: commit: commot
+[33m2bb2b7d[m HEAD@{37}: commit (initial): first commit

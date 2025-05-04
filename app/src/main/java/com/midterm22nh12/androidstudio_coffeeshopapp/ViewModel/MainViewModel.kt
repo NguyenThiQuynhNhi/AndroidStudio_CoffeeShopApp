@@ -17,8 +17,8 @@ class MainViewModel: ViewModel() {
         return repository.loadCategory()
     }
 
-    fun loadPopular():LiveData<MutableList<ItemsModel>>{
-        return repository.loadPopular()
+    fun loadAllCoffee():LiveData<MutableList<ItemsModel>>{
+        return repository.loadAllCoffee()
     }
 
     fun loadItems(categoryId:String):LiveData<MutableList<ItemsModel>>{

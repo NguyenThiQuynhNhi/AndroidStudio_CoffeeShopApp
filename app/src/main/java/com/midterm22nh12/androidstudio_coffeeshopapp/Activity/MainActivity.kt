@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         binding.cartBtn.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
         }
+
+        // Thêm sự kiện click cho myorderBtn
+        binding.orderBtn.setOnClickListener {
+            // Tạo Intent để chuyển sang OrderListActivity
+            startActivity(Intent(this, OrderListActivity::class.java)) // Bỏ comment dòng này
+        }
         binding.profileBtn.setOnClickListener{
             startActivity(Intent(this, ProfileActivity::class.java))
         }

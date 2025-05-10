@@ -1,7 +1,6 @@
 package com.midterm22nh12.androidstudio_coffeeshopapp.Activity
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -126,21 +125,9 @@ class LoginActivity : AppCompatActivity() {
                     val task: Task<GoogleSignInAccount> =
                         GoogleSignIn.getSignedInAccountFromIntent(data)
                     try {
-                        val account = task.getResult(ApiException::class.java)
-                        val name = account.displayName
-                        val email = account.email
-
-                        // Lưu vào SharedPreferences để ProfileActivity dùng
-                        val prefs = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-                        prefs.edit().apply {
-                            putString("name", name)
-                            putString("phone", email) // Hoặc tạo thêm key "email"
-                            apply()
-                        }
-
+                        task.getResult(ApiException::class.java)
                         finish()
                         startActivity(Intent(this, MainActivity::class.java))
-
                     } catch (e: ApiException) {
                         Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
                     }

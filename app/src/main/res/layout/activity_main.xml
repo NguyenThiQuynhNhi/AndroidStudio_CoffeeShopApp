@@ -186,7 +186,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Tab 1 - Explorer -->
+        <!-- Tab 1 -->
         <LinearLayout
             android:id="@+id/explorerBtn"
             android:layout_width="0dp"
@@ -196,7 +196,7 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/iconExplorer"
+                android:id="@+id/imageViewA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/btn_1" />
@@ -210,7 +210,8 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Tab 2 - Cart -->
+        <!-- Các tab tiếp theo giống hệt, chỉ khác icon/text -->
+        <!-- Tab 2 -->
         <LinearLayout
             android:id="@+id/cartBtn"
             android:layout_width="0dp"
@@ -234,7 +235,7 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Tab 3 - Menu (Explorer duplicated?) -->
+        <!-- Tab 3 -->
         <LinearLayout
             android:id="@+id/menuBtn"
             android:layout_width="0dp"
@@ -258,7 +259,7 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Tab 4 - My Orders -->
+        <!-- Tab 4 -->
         <LinearLayout
             android:id="@+id/orderBtn"
             android:layout_width="0dp"
@@ -282,7 +283,7 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Tab 5 - Profile -->
+        <!-- Tab 5 -->
         <LinearLayout
             android:id="@+id/profileBtn"
             android:layout_width="0dp"

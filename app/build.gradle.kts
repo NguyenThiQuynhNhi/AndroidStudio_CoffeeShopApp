@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -10,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.midterm22nh12.androidstudio_coffeeshopapp"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -58,10 +59,19 @@ dependencies {
     // Glide (image loading)
     implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.activity)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+
+    // ViewModel và LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
     // Gson (JSON parsing)
     implementation("com.google.code.gson:gson:2.10.1")
+
+    implementation ("com.github.TutorialsAndroid:GButton:v1.0.19")
+    implementation ("com.google.android.gms:play-services-auth:20.4.0")
 
     // Unit testing
     testImplementation("junit:junit:4.13.2")

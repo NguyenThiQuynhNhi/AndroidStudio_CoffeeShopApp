@@ -26,12 +26,18 @@ class MainActivity : AppCompatActivity() {
         initBanner()
         initcategory()
         initAllCoffee()
-        initBottomMenu()
+        initBottomMenu() // Gọi phương thức này để thiết lập các click listener
     }
 
     private fun initBottomMenu() {
         binding.cartBtn.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
+        }
+
+        // Thêm sự kiện click cho myorderBtn
+        binding.myorderBtn.setOnClickListener {
+            // Tạo Intent để chuyển sang OrderListActivity
+            startActivity(Intent(this, OrderListActivity::class.java)) // Bỏ comment dòng này
         }
     }
 

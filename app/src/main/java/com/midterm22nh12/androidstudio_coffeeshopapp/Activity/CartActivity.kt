@@ -1,5 +1,7 @@
 package com.midterm22nh12.androidstudio_coffeeshopapp.Activity
 
+import com.midterm22nh12.androidstudio_coffeeshopapp.Activity.CheckoutActivity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -51,6 +53,13 @@ class CartActivity : AppCompatActivity() {
 
     private fun setVariable() {
         binding.backBtn.setOnClickListener{ finish() }
+
+        binding.checkoutButton.setOnClickListener {
+            val total = Math.round((managmentCart.getTotalFee() + tax + 15) * 100) / 100.0
+            val intent = Intent(this, CheckoutActivity::class.java)
+            intent.putExtra("totalAmount", total)
+            startActivity(intent)
+        }
     }
 
     private fun calculateCart() {

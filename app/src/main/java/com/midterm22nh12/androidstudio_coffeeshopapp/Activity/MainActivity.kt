@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         binding.cartBtn.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
         }
+        binding.profileBtn.setOnClickListener{
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+        binding.orderBtn.setOnClickListener{
+            startActivity(Intent(this, MyOrderActivity::class.java))
+        }
     }
 
     private fun initBanner() {

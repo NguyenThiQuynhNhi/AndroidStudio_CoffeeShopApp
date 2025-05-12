@@ -44,6 +44,16 @@
         <activity
             android:name=".Activity.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".Activity.CheckoutActivity"
+            android:exported="false"/>
+        <activity android:name=".Activity.ProfileActivity"
+            android:exported="false" />
+        <activity android:name=".Activity.MyOrderActivity"
+            android:exported="false" />
+
+
+
     </application>
 
 </manifest>

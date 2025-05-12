@@ -186,8 +186,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Tab 1 -->
+        <!-- Tab 1 - Explorer -->
         <LinearLayout
+            android:id="@+id/explorerBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -195,13 +196,13 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/imageViewA"
+                android:id="@+id/iconExplorer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/btn_1" />
 
             <TextView
-                android:id="@+id/textViewA"
+                android:id="@+id/textExplorer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Explorer"
@@ -209,8 +210,7 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Các tab tiếp theo giống hệt, chỉ khác icon/text -->
-        <!-- Tab 2 -->
+        <!-- Tab 2 - Cart -->
         <LinearLayout
             android:id="@+id/cartBtn"
             android:layout_width="0dp"
@@ -220,11 +220,13 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/iconCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/btn_2" />
 
             <TextView
+                android:id="@+id/textCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cart"
@@ -232,8 +234,9 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Tab 3 -->
+        <!-- Tab 3 - Menu (Explorer duplicated?) -->
         <LinearLayout
+            android:id="@+id/menuBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -241,20 +244,23 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/iconMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/btn_3" />
 
             <TextView
+                android:id="@+id/textMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Explorer"
+                android:text="Menu"
                 android:textColor="@color/white"
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Tab 4 -->
+        <!-- Tab 4 - My Orders -->
         <LinearLayout
+            android:id="@+id/orderBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -262,11 +268,13 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/iconOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/btn_4" />
 
             <TextView
+                android:id="@+id/textOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="My Order"
@@ -274,8 +282,9 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Tab 5 -->
+        <!-- Tab 5 - Profile -->
         <LinearLayout
+            android:id="@+id/profileBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -283,13 +292,13 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/imageViewCart"
+                android:id="@+id/iconProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/btn_5" />
 
             <TextView
-                android:id="@+id/testViewCart"
+                android:id="@+id/textProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Profile"

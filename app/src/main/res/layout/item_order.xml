@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    android:layout_marginBottom="12dp"
+    android:backgroundTint="#FFFFFF"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/orderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên: Ngoc"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/orderPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SĐT: 0123456789" />
+
+        <TextView
+            android:id="@+id/orderAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Địa chỉ: 123 Đường ABC" />
+
+        <TextView
+            android:id="@+id/orderTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thời gian: 01/01/2025 12:00" />
+
+        <TextView
+            android:id="@+id/orderTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng tiền: $99.00"
+            android:textStyle="bold"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

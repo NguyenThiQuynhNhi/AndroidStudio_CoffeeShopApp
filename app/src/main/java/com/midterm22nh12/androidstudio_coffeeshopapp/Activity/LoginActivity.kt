@@ -59,12 +59,20 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+                        // ✅ Lưu email vào SharedPreferences
+                        val prefs = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
+                        prefs.edit().apply {
+                            putString("email", email)
+                            apply()
+                        }
+
                         startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     } else {
                         Toast.makeText(this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show()
                     }
                 }
+
         }
 
 
@@ -134,9 +142,10 @@ class LoginActivity : AppCompatActivity() {
                         val prefs = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
                         prefs.edit().apply {
                             putString("name", name)
-                            putString("phone", email) // Hoặc tạo thêm key "email"
+                            putString("email", email) // ✅ Dùng đúng key là "email"
                             apply()
                         }
+
 
                         finish()
                         startActivity(Intent(this, MainActivity::class.java))

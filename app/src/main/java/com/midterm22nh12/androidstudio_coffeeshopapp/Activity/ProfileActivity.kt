@@ -1,7 +1,6 @@
 package com.midterm22nh12.androidstudio_coffeeshopapp.Activity
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +21,7 @@ class ProfileActivity : AppCompatActivity() {
         binding.nameEdit.setText(prefs.getString("name", ""))
         binding.phoneEdit.setText(prefs.getString("phone", ""))
         binding.emailEdit.setText(prefs.getString("email", ""))
+ // là email nếu đăng nhập bằng Google
 
         binding.saveButton.setOnClickListener {
             val name = binding.nameEdit.text.toString()
@@ -38,22 +38,6 @@ class ProfileActivity : AppCompatActivity() {
                 Toast.makeText(this, "Đã lưu thông tin", Toast.LENGTH_SHORT).show()
                 finish()
             }
-        }
-        initBottomMenu()
-    }
-    private fun initBottomMenu() {
-        binding.explorerBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-        binding.cartBtn.setOnClickListener {
-            startActivity(Intent(this, CartActivity::class.java))
-        }
-        binding.favorBtn.setOnClickListener({
-//          triển khai FavoriteActivity thì mở comment
-//          startActivity(Intent(this, FavoriteActivity::class.java))
-        })
-        binding.orderBtn.setOnClickListener{
-            startActivity(Intent(this, MyOrderActivity::class.java))
         }
     }
 }

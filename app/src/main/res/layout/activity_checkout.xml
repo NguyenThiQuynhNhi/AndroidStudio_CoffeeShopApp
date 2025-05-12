@@ -1,257 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightCream">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="48dp">
-
-        <LinearLayout
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/back" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="Back"
-                android:textColor="@color/darkBrown" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/categoryTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Confirm Order"
-            android:textColor="@color/darkBrown"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:padding="20dp">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/nameInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Full name"
-                android:inputType="textPersonName"/>
-
-            <EditText
-                android:id="@+id/phoneInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone number"
-                android:inputType="phone"
-                android:layout_marginTop="10dp"/>
-
-            <EditText
-                android:id="@+id/addressInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Address"
-                android:inputType="textPostalAddress"
-                android:paddingEnd="48dp"
-                android:drawablePadding="8dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true" />
-
-            <ImageView
-                android:id="@+id/mapIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_map_24"
-                android:layout_alignEnd="@id/addressInput"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="12dp"
-                android:contentDescription="Chọn địa chỉ từ bản đồ" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Payment Method:"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cash On Delivery (COD)"
-                android:layout_marginTop="5dp"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/placeOrderButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ORDER"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:background="@drawable/orange_bg"
-                android:layout_marginTop="20dp"/>
-        </LinearLayout>
-    </ScrollView>
+    android:padding="20dp">
 
     <LinearLayout
-        android:id="@+id/bottomBar"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:background="@color/darkBrown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="wrap_content">
 
-        <!-- Tab 1 -->
-        <LinearLayout
-            android:id="@+id/explorerBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+        <EditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Họ và tên"
+            android:inputType="textPersonName"/>
 
-            <ImageView
-                android:id="@+id/imageViewA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_1" />
+        <EditText
+            android:id="@+id/phoneInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:inputType="phone"
+            android:layout_marginTop="10dp"/>
 
-            <TextView
-                android:id="@+id/textExplorer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Explorer"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
+        <EditText
+            android:id="@+id/addressInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Địa chỉ giao hàng"
+            android:inputType="textPostalAddress"
+            android:layout_marginTop="10dp"/>
 
-        <!-- Tab 2 -->
-        <LinearLayout
-            android:id="@+id/cartBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phương thức thanh toán:"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
 
-            <ImageView
-                android:id="@+id/iconCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_2" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thanh toán khi nhận hàng (COD)"
+            android:layout_marginTop="5dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cart"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <!-- Tab 3 -->
-        <LinearLayout
-            android:id="@+id/menuBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iconMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_3" />
-
-            <TextView
-                android:id="@+id/textMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Menu"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <!-- Tab 4 -->
-        <LinearLayout
-            android:id="@+id/orderBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iconOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_4" />
-
-            <TextView
-                android:id="@+id/textOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Order"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <!-- Tab 5 -->
-        <LinearLayout
-            android:id="@+id/profileBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iconProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_5" />
-
-            <TextView
-                android:id="@+id/textProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/placeOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đặt hàng"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

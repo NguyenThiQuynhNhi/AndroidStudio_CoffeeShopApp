@@ -2,24 +2,21 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    android:layout_marginTop="6dp"
-    android:layout_marginHorizontal="12dp"
     android:elevation="4dp"
-    android:radius="8dp"
-    android:backgroundTint="#FFFFFF">
+    android:layout_marginBottom="12dp"
+    android:backgroundTint="#FFFFFF"
+    android:padding="16dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/orderName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tên: Nguyễn Văn A"
+            android:text="Tên: Ngoc"
             android:textStyle="bold"
             android:textSize="16sp" />
 
@@ -27,22 +24,19 @@
             android:id="@+id/orderPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SĐT: 0123456789"
-            android:layout_marginTop="2dp" />
+            android:text="SĐT: 0123456789" />
 
         <TextView
             android:id="@+id/orderAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Địa chỉ: 123 Đường ABC"
-            android:layout_marginTop="2dp" />
+            android:text="Địa chỉ: 123 Đường ABC" />
 
         <TextView
             android:id="@+id/orderTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thời gian: 01/01/2025 12:00"
-            android:layout_marginTop="2dp" />
+            android:text="Thời gian: 01/01/2025 12:00" />
 
         <TextView
             android:id="@+id/orderTotal"
@@ -51,14 +45,5 @@
             android:text="Tổng tiền: $99.00"
             android:textStyle="bold"
             android:layout_marginTop="6dp"/>
-
-        <Button
-            android:id="@+id/viewDetailBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Xem chi tiết"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#FF9800"
-            android:textColor="@android:color/white" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

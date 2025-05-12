@@ -118,7 +118,6 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
         android:background="@drawable/white_top_corner_bg"
         android:orientation="vertical"
         android:paddingTop="16dp"
@@ -230,7 +229,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/paymentBtn"
+            android:id="@+id/checkoutButton"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -238,140 +237,10 @@
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
             android:background="@drawable/brown_full_corner_bg"
-            android:text="Payment"
+            android:text="Procced to Checkout"
             android:textColor="@color/white"
             android:textSize="16sp" />
-    </LinearLayout>
 
-    <!-- Custom Bottom Bar -->
-    <LinearLayout
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:background="@color/darkBrown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Tab 1 -->
-        <LinearLayout
-            android:id="@+id/explorerBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imageViewA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_1" />
-
-            <TextView
-                android:id="@+id/textExplorer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Explorer"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <!-- Tab 2 -->
-        <LinearLayout
-            android:id="@+id/cartBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iconCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cart"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <!-- Tab 3 -->
-        <LinearLayout
-            android:id="@+id/favorBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iconMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_3" />
-
-            <TextView
-                android:id="@+id/textFavor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="favorite"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <!-- Tab 4 -->
-        <LinearLayout
-            android:id="@+id/orderBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iconOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_4" />
-
-            <TextView
-                android:id="@+id/textOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Order"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <!-- Tab 5 -->
-        <LinearLayout
-            android:id="@+id/profileBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iconProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_5" />
-
-            <TextView
-                android:id="@+id/textProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

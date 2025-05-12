@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.BannerModel
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
@@ -33,6 +34,7 @@ class MainRepository {
                 listData.value = mutableListOf()
             }
         })
+
         return listData
     }
 
@@ -56,12 +58,13 @@ class MainRepository {
                 listData.value = mutableListOf()
             }
         })
+
         return listData
     }
 
-    fun loadPopular(): LiveData<MutableList<ItemsModel>> {
+    fun loadAllCoffee(): LiveData<MutableList<ItemsModel>> {
         val listData = MutableLiveData<MutableList<ItemsModel>>()
-        val ref = firebaseDatabase.getReference("Popular")
+        val ref = firebaseDatabase.getReference("Items")
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -74,11 +77,33 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Xử lý lỗi: in thông báo lỗi và trả về danh sách rỗng
                 println("Firebase error: ${error.message}")
                 listData.value = mutableListOf()
             }
         })
+
         return listData
+    }
+
+    fun loadItemCategory(categoryId:String):LiveData<MutableList<ItemsModel>>{
+        val itemsLiveData = MutableLiveData<MutableList<ItemsModel>>()
+        val ref = firebaseDatabase.getReference("Items")
+        val query:Query=ref.orderByChild("categoryId").equalTo(categoryId)
+
+        query.addListenerForSingleValueEvent(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = mutableListOf<ItemsModel>()
+                for (childSnapshot in snapshot.children) {
+                    val item = childSnapshot.getValue(ItemsModel::class.java)
+                    item?.let { list.add(it) }
+                }
+                itemsLiveData.value = list
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+        return itemsLiveData
     }
 }

@@ -9,7 +9,6 @@ import com.midterm22nh12.androidstudio_coffeeshopapp.databinding.ActivitySplashB
 class SplashActivity : AppCompatActivity() {
 
     lateinit var binding:ActivitySplashBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -17,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.startBtn.setOnClickListener{
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 }

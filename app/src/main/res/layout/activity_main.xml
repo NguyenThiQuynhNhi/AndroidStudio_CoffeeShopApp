@@ -11,10 +11,10 @@
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="16dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/bottomBar">
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,14 +42,14 @@
                     android:textColor="@color/darkBrown"
                     android:textColorHint="@color/darkBrown" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/dark_brown_bg"
-                    android:padding="12dp"
-                    app:srcCompat="@drawable/settings" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageView2"-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:background="@drawable/dark_brown_bg"-->
+<!--                    android:padding="12dp"-->
+<!--                    app:srcCompat="@drawable/settings" />-->
             </LinearLayout>
 
             <!-- Banner -->
@@ -95,7 +95,7 @@
             <!-- RecyclerView Category -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="80dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewCategory"
@@ -135,16 +135,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Popular coffee"
+                    android:text="Menu:"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/see_all"
-                    android:textColor="@color/black" />
             </LinearLayout>
 
             <!-- RecyclerView Popular -->
@@ -159,6 +154,7 @@
                     android:layout_height="match_parent"
                     android:minHeight="150dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -216,6 +212,7 @@
         <!-- Các tab tiếp theo giống hệt, chỉ khác icon/text -->
         <!-- Tab 2 -->
         <LinearLayout
+            android:id="@+id/cartBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

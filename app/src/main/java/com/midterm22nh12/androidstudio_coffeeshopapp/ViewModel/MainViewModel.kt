@@ -3,10 +3,9 @@ package com.midterm22nh12.androidstudio_coffeeshopapp.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.BannerModel
-import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
 import com.midterm22nh12.androidstudio_coffeeshopapp.Repository.MainRepository
 import com.midterm22nh12.androidstudio_coffeeshopapp.com.midterm22nh12.androidstudio_coffeeshopapp.Domain.CategoryModel
-
+import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
 class MainViewModel: ViewModel() {
     private val repository=MainRepository()
 
@@ -18,7 +17,11 @@ class MainViewModel: ViewModel() {
         return repository.loadCategory()
     }
 
-    fun loadPopular():LiveData<MutableList<ItemsModel>>{
-        return repository.loadPopular()
+    fun loadAllCoffee():LiveData<MutableList<ItemsModel>>{
+        return repository.loadAllCoffee()
+    }
+
+    fun loadItems(categoryId:String):LiveData<MutableList<ItemsModel>>{
+        return repository.loadItemCategory(categoryId)
     }
 }

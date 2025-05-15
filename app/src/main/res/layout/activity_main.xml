@@ -255,12 +255,11 @@
 
         <!-- Tab 4 -->
         <LinearLayout
-            android:id="@+id/myorderBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"

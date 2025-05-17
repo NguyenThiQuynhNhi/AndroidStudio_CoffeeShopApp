@@ -52,15 +52,22 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun setVariable() {
-        binding.backBtn.setOnClickListener{ finish() }
+        binding.backBtn.setOnClickListener { finish() }
 
         binding.checkoutButton.setOnClickListener {
             val total = Math.round((managmentCart.getTotalFee() + tax + 15) * 100) / 100.0
             val intent = Intent(this, CheckoutActivity::class.java)
             intent.putExtra("totalAmount", total)
+
+            // 🆕 Gửi danh sách CartItem dưới dạng JSON
+            val cartList = managmentCart.getListCart()
+            val cartJson = com.google.gson.Gson().toJson(cartList)
+            intent.putExtra("cartItems", cartJson)
+
             startActivity(intent)
         }
     }
+
 
     private fun calculateCart() {
         val percentTax=0.02

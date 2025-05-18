@@ -30,7 +30,21 @@
             android:layout_height="wrap_content"
             android:hint="Địa chỉ giao hàng"
             android:inputType="textPostalAddress"
-            android:layout_marginTop="10dp"/>
+            android:paddingEnd="48dp"
+            android:drawablePadding="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:id="@+id/mapIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_map_24"
+            android:layout_alignEnd="@id/addressInput"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="Chọn địa chỉ từ bản đồ" />
 
         <TextView
             android:layout_width="match_parent"

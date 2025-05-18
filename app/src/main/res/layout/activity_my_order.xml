@@ -16,5 +16,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1" /> <!-- ✅ thêm layout_weight -->
+        />
+
+    <Button
+        android:id="@+id/clearHistoryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xóa lịch sử"
+        android:layout_gravity="end"
+        android:layout_margin="8dp"/>
+
 </LinearLayout>

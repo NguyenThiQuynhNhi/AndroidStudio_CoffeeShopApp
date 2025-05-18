@@ -5,5 +5,6 @@ data class OrderModel(
     val phone: String,
     val address: String,
     val total: Double,
-    val time: String
+    val time: String,
+    val cartItems: ArrayList<ItemsModel> // ✅ Đổi từ CartItem sang ItemsModel
 )

@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.firebase.firestore)
+    implementation(libs.play.services.maps)
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
     // ViewModel và LiveData

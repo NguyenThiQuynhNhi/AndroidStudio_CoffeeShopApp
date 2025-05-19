@@ -18,7 +18,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val prefs = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
 
-        // Load data nếu đã lưu
+
         binding.nameEdit.setText(prefs.getString("name", ""))
         binding.phoneEdit.setText(prefs.getString("phone", ""))
         binding.emailEdit.setText(prefs.getString("email", ""))

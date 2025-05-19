@@ -24,7 +24,7 @@ class FavoriteActivity : AppCompatActivity() {
         initRecyclerView()
         loadFavoriteItems()
         initBottomMenu()
-        checkEmptyState() // Kiểm tra trạng thái rỗng ban đầu
+        checkEmptyState()
 
         binding.backBtnFavorite.setOnClickListener {
             finish() // Đóng Activity hiện tại để quay lại màn hình trước đó

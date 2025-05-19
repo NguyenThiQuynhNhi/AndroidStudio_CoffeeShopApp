@@ -74,6 +74,10 @@ class CartAdapter(
                 })
             }
         }
+
+        holder.binding.sizeTxt.text = "Size: ${item.selectedSize}"
+
+
     }
 
     override fun getItemCount(): Int = listItemSelected.size

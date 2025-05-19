@@ -10,4 +10,5 @@ data class ItemsModel(
     var rating: Double= 0.0,
     var numberInCart: Int = 0,
     var extra: String= "",
+    var selectedSize: String = ""
     ) : Serializable

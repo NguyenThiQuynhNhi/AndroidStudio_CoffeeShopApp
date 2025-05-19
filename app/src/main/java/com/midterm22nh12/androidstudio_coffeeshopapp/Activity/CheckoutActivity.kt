@@ -9,6 +9,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.OrderModel
+import com.midterm22nh12.androidstudio_coffeeshopapp.Helper.ManagmentCart
 import com.midterm22nh12.androidstudio_coffeeshopapp.databinding.ActivityCheckoutBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,12 +18,11 @@ import kotlin.collections.ArrayList
 class CheckoutActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCheckoutBinding
+    lateinit var managmentCart: ManagmentCart
     private val MAP_REQUEST_CODE = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
 
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,18 +37,29 @@ class CheckoutActivity : AppCompatActivity() {
         val itemType = object : TypeToken<ArrayList<ItemsModel>>() {}.type
         val itemList: ArrayList<ItemsModel> = gson.fromJson(cartJson, itemType)
 
-        // ✅ Bắt sự kiện mở bản đồ khi bấm vào ô địa chỉ
         binding.addressInput.setOnClickListener {
             val intent = Intent(this, MapsActivity::class.java)
             startActivityForResult(intent, MAP_REQUEST_CODE)
         }
-        // ✅ Bắt sự kiện mở bản đồ khi bấm vào biểu tượng bản đồ
         binding.mapIcon.setOnClickListener {
             val intent = Intent(this, MapsActivity::class.java)
             startActivityForResult(intent, MAP_REQUEST_CODE)
         }
 
+        managmentCart = ManagmentCart(this)
 
+        // Thiết lập nút "Đặt hàng"
+        binding.orderBtn.setOnClickListener {
+            // Xóa giỏ hàng khi đặt hàng thành công
+            managmentCart.clearCart()
+            // Chuyển về trang chính hoặc hiển thị thông báo
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
 
         binding.placeOrderButton.setOnClickListener {
             val name = binding.nameInput.text.toString().trim()
@@ -61,7 +72,7 @@ class CheckoutActivity : AppCompatActivity() {
             } else {
                 val order = OrderModel(name, phone, address, total, time, itemList)
                 saveOrder(order)
-                Toast.makeText(this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, MyOrderActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK

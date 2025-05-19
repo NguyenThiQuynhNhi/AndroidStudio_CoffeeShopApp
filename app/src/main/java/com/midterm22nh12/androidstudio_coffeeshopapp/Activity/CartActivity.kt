@@ -31,21 +31,49 @@ class CartActivity : AppCompatActivity() {
         calculateCart()
         setVariable()
         initCartList()
+        initBottomMenu()
+    }
 
+    private fun initBottomMenu() {
+        binding.explorerBtn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+        binding.favorBtn.setOnClickListener({
+//          triển khai FavoriteActivity thì mở comment
+//          startActivity(Intent(this, FavoriteActivity::class.java))
+        })
+        binding.orderBtn.setOnClickListener{
+            startActivity(Intent(this, MyOrderActivity::class.java))
+        }
+        binding.profileBtn.setOnClickListener{
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 
     private fun initCartList() {
+        binding.apply {
+            cartView.layoutManager=
+                LinearLayoutManager(this@CartActivity, LinearLayoutManager.VERTICAL, false)
+            cartView.adapter=CartAdapter(
+                managmentCart.getListCart(),
+                this@CartActivity,
+                object :ChangeNumberItemsListener{
+                    override fun onChanged() {
+                        calculateCart()
+                    }
+                }
+            )
+        }
     }
 
     private fun setVariable() {
         binding.backBtn.setOnClickListener { finish() }
 
-        binding.checkoutButton.setOnClickListener {
+        binding.paymentBtn.setOnClickListener {
             val total = Math.round((managmentCart.getTotalFee() + tax + 15) * 100) / 100.0
             val intent = Intent(this, CheckoutActivity::class.java)
             intent.putExtra("totalAmount", total)
 
-            // 🆕 Gửi danh sách CartItem dưới dạng JSON
             val cartList = managmentCart.getListCart()
             val cartJson = com.google.gson.Gson().toJson(cartList)
             intent.putExtra("cartItems", cartJson)
@@ -57,7 +85,7 @@ class CartActivity : AppCompatActivity() {
 
     private fun calculateCart() {
         val percentTax=0.02
-         val delivery=15
+        val delivery=15
         tax=Math.round((managmentCart.getTotalFee()*percentTax)*100)/100.0
         val total=Math.round((managmentCart.getTotalFee()+tax+delivery)*100)/100
         val itemTotal=Math.round(managmentCart.getTotalFee()*100)/100
@@ -66,7 +94,6 @@ class CartActivity : AppCompatActivity() {
             taxTxt.text = "$$tax"
             deliveryTxt.text = "$$delivery"
             totalTxt.text = "$$total"
-
         }
     }
 }

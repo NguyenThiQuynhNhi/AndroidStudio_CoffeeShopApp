@@ -60,4 +60,10 @@ class ManagmentCart(val context: Context) {
         }
         return fee
     }
+
+    fun clearCart() {
+        val listItems = getListCart()
+        listItems.clear()
+        tinyDB.putListObject("CartList", listItems)
+    }
 }

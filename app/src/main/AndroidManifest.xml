@@ -57,12 +57,9 @@
             android:exported="false" />
         <activity android:name=".Activity.MyOrderActivity"
             android:exported="false" />
+        <activity android:name=".Activity.FavoriteActivity"
+            android:exported="false" />
         <activity android:name=".Activity.MapsActivity" />
         <activity android:name=".Activity.OrderDetailActivity" />
-
-
-
-        <activity android:name=".Activity.OrderListActivity"
-            android:exported="false"/>
     </application>
 </manifest>

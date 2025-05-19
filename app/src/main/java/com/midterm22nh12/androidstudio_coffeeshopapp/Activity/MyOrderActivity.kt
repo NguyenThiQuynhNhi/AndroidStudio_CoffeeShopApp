@@ -1,6 +1,7 @@
 package com.midterm22nh12.androidstudio_coffeeshopapp.Activity
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -37,9 +38,23 @@ class MyOrderActivity : AppCompatActivity() {
                 .setNegativeButton("Hủy", null)
                 .show()
         }
-
+        initBottomMenu()
     }
+    private fun initBottomMenu() {
+        binding.explorerBtn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+        binding.cartBtn.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
+        binding.favorBtn.setOnClickListener({
 
+          startActivity(Intent(this, FavoriteActivity::class.java))
+        })
+        binding.profileBtn.setOnClickListener{
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+    }
     private fun loadOrders() {
         val sharedPrefs = getSharedPreferences("MyOrders", Context.MODE_PRIVATE)
         val json = sharedPrefs.getString("orderList", "[]")

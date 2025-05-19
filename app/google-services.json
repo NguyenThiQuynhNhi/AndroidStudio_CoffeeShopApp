@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "672955450663",
-    "project_id": "androidstudio-coffeeshop-2ae1c",
-    "storage_bucket": "androidstudio-coffeeshop-2ae1c.firebasestorage.app"
+    "project_number": "170089724974",
+    "firebase_url": "https://androidstudio-coffeeshopapp-default-rtdb.firebaseio.com",
+    "project_id": "androidstudio-coffeeshopapp",
+    "storage_bucket": "androidstudio-coffeeshopapp.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:672955450663:android:47f8ceb6de7d0cfc121502",
+        "mobilesdk_app_id": "1:170089724974:android:07a5006dbd730ccf24b3bf",
         "android_client_info": {
           "package_name": "com.midterm22nh12.androidstudio_coffeeshopapp"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBP3Vofo3Uvb0QwWwEqDjpDgZcdJvH3WJo"
+          "current_key": "AIzaSyAabGFWfkU6QX5wkz1fQbE4vlU_utxEp0k"
         }
       ],
       "services": {

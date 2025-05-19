@@ -25,11 +25,11 @@ class OrderAdapter(private val orderList: List<OrderModel>) :
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val order = orderList[position]
         holder.binding.apply {
-            orderName.text = "Tên: ${order.name}"
-            orderPhone.text = "SĐT: ${order.phone}"
-            orderAddress.text = "Địa chỉ: ${order.address}"
-            orderTime.text = "Thời gian: ${order.time}"
-            orderTotal.text = "Tổng tiền: $${order.total}"
+            orderName.text = "Name: ${order.name}"
+            orderPhone.text = "Phone Number: ${order.phone}"
+            orderAddress.text = "Address: ${order.address}"
+            orderTime.text = "Time Order: ${order.time}"
+            orderTotal.text = "Total: $${order.total}"
 
             viewDetailBtn.setOnClickListener {
                 val context = holder.itemView.context

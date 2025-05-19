@@ -2,129 +2,72 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightCream">
+    tools:context=".Activity.FavoriteActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="48dp">
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
-            android:id="@+id/backBtn"
+        <ImageView
+            android:id="@+id/backBtnFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:orientation="horizontal"
+            android:padding="8dp"
+            android:src="@drawable/back"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/back" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="Back"
-                android:textColor="@color/darkBrown" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
+        <!-- Thay @color/black bằng màu bạn muốn -->
 
         <TextView
-            android:id="@+id/categoryTxt"
-            android:layout_width="wrap_content"
+            android:id="@+id/textViewTitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Confirm Order"
-            android:textColor="@color/darkBrown"
-            android:textSize="22sp"
+            android:gravity="center_horizontal"
+            android:text="Favorite"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backBtnFavorite"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:padding="20dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoriteRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayoutHeader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        tools:listitem="@layout/viewholder_cart" />
+    <!-- tools:listitem sử dụng lại viewholder_cart để xem trước -->
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/emptyFavoriteTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chưa có sản phẩm yêu thích nào."
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayoutHeader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-            <EditText
-                android:id="@+id/nameInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Full name"
-                android:inputType="textPersonName"/>
-
-            <EditText
-                android:id="@+id/phoneInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone number"
-                android:inputType="phone"
-                android:layout_marginTop="10dp"/>
-
-            <EditText
-                android:id="@+id/addressInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Address"
-                android:inputType="textPostalAddress"
-                android:paddingEnd="48dp"
-                android:drawablePadding="8dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true" />
-
-            <ImageView
-                android:id="@+id/mapIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_map_24"
-                android:layout_alignEnd="@id/addressInput"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="12dp"
-                android:contentDescription="Chọn địa chỉ từ bản đồ" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Payment Method:"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cash On Delivery (COD)"
-                android:layout_marginTop="5dp"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/placeOrderButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ORDER"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:background="@drawable/orange_bg"
-                android:layout_marginTop="20dp"/>
-        </LinearLayout>
-    </ScrollView>
-
+    <!-- Custom Bottom Bar -->
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -184,7 +127,7 @@
 
         <!-- Tab 3 -->
         <LinearLayout
-            android:id="@+id/menuBtn"
+            android:id="@+id/favorBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -198,10 +141,10 @@
                 app:srcCompat="@drawable/btn_3" />
 
             <TextView
-                android:id="@+id/textMenu"
+                android:id="@+id/textFavor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Menu"
+                android:text="favorite"
                 android:textColor="@color/white"
                 android:textSize="10sp" />
         </LinearLayout>
@@ -243,6 +186,7 @@
                 android:id="@+id/iconProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/lightCream"
                 app:srcCompat="@drawable/btn_5" />
 
             <TextView
@@ -254,4 +198,5 @@
                 android:textSize="10sp" />
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

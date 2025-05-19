@@ -50,19 +50,17 @@ class OrderDetailActivity : AppCompatActivity() {
 
         binding.cancelOrderBtn.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Hủy đơn hàng")
-                .setMessage("Bạn có chắc chắn muốn hủy đơn hàng này?")
-                .setPositiveButton("Hủy đơn") { _, _ ->
+                .setTitle("Cancel Order")
+                .setMessage("Are you sure you want to cancel this order?")
+                .setPositiveButton("Cancel") { _, _ ->
                     removeOrder()
-                    Toast.makeText(this, "Đơn hàng đã được hủy", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Success Cancel", Toast.LENGTH_SHORT).show()
                     finish()
                 }
-                .setNegativeButton("Không", null)
+                .setNegativeButton("No", null)
                 .show()
         }
 
-
-        // Cập nhật trạng thái theo thời gian thực
         startStatusUpdater()
     }
 
@@ -72,11 +70,11 @@ class OrderDetailActivity : AppCompatActivity() {
         updateRunnable = object : Runnable {
             override fun run() {
                 updateOrderStatus(orderTime)
-                handler.postDelayed(this, 30 * 1000) // Cập nhật mỗi 30 giây
+                handler.postDelayed(this, 30 * 1000)
             }
         }
 
-        handler.post(updateRunnable) // Chạy lần đầu
+        handler.post(updateRunnable)
     }
 
     private fun updateOrderStatus(orderTime: String) {
@@ -88,12 +86,12 @@ class OrderDetailActivity : AppCompatActivity() {
             val diffMinutes = diffMillis / 60000
 
             val (statusText, statusColor) = when {
-                diffMinutes >= 5 -> "Giao hàng thành công" to android.R.color.holo_green_dark
-                diffMinutes >= 1 -> "Đang giao hàng" to android.R.color.holo_orange_dark
-                else -> "Đang chuẩn bị" to android.R.color.darker_gray
+                diffMinutes >= 5 -> "Success Delivery!" to android.R.color.holo_green_dark
+                diffMinutes >= 1 -> "Delivering..." to android.R.color.holo_orange_dark
+                else -> "Preparing..." to android.R.color.darker_gray
             }
 
-            binding.statusTxt.text = "Trạng thái đơn hàng: $statusText"
+            binding.statusTxt.text = "Order Status: $statusText"
             binding.statusTxt.setTextColor(resources.getColor(statusColor, null))
 
             // ✅ Cho phép hủy đơn hàng nếu đang chuẩn bị
@@ -101,7 +99,7 @@ class OrderDetailActivity : AppCompatActivity() {
             binding.cancelOrderBtn.alpha = if (diffMinutes < 1) 1f else 0.5f
 
         } catch (e: Exception) {
-            binding.statusTxt.text = "Không xác định trạng thái đơn hàng"
+            binding.statusTxt.text = "Cannot update status"
             binding.cancelOrderBtn.isEnabled = false
         }
     }

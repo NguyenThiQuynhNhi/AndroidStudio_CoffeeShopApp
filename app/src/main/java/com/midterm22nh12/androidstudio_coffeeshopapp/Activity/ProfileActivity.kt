@@ -18,7 +18,6 @@ class ProfileActivity : AppCompatActivity() {
 
         val prefs = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
 
-        // Load data nếu đã lưu
         binding.nameEdit.setText(prefs.getString("name", ""))
         binding.phoneEdit.setText(prefs.getString("phone", ""))
         binding.emailEdit.setText(prefs.getString("email", ""))
@@ -28,14 +27,14 @@ class ProfileActivity : AppCompatActivity() {
             val phone = binding.phoneEdit.text.toString()
 
             if (name.isEmpty() || phone.isEmpty()) {
-                Toast.makeText(this, "Hãy điền đủ thông tin", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill in all the required information", Toast.LENGTH_SHORT).show()
             } else {
                 prefs.edit().apply {
                     putString("name", name)
                     putString("phone", phone)
                     apply()
                 }
-                Toast.makeText(this, "Đã lưu thông tin", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }

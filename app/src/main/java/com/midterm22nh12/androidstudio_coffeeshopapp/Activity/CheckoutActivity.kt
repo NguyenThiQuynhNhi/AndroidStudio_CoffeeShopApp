@@ -48,11 +48,8 @@ class CheckoutActivity : AppCompatActivity() {
 
         managmentCart = ManagmentCart(this)
 
-        // Thiết lập nút "Đặt hàng"
         binding.orderBtn.setOnClickListener {
-            // Xóa giỏ hàng khi đặt hàng thành công
             managmentCart.clearCart()
-            // Chuyển về trang chính hoặc hiển thị thông báo
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -68,7 +65,7 @@ class CheckoutActivity : AppCompatActivity() {
             val time = getCurrentTime()
 
             if (name.isEmpty() || phone.isEmpty() || address.isEmpty()) {
-                Toast.makeText(this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill in all the required information", Toast.LENGTH_SHORT).show()
             } else {
                 val order = OrderModel(name, phone, address, total, time, itemList)
                 saveOrder(order)

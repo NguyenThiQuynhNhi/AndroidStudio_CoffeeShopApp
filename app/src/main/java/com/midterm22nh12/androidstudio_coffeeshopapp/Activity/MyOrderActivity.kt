@@ -26,16 +26,16 @@ class MyOrderActivity : AppCompatActivity() {
 
         binding.clearHistoryBtn.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Xác nhận")
-                .setMessage("Bạn có chắc chắn muốn xóa toàn bộ lịch sử đơn hàng?")
-                .setPositiveButton("Xóa") { _, _ ->
+                .setTitle("Confirm")
+                .setMessage("Are you sure you want to delete all order history?")
+                .setPositiveButton("Delete") { _, _ ->
                     val prefs = getSharedPreferences("MyOrders", Context.MODE_PRIVATE)
                     prefs.edit().remove("orderList").apply()
 
                     binding.orderRecyclerView.adapter = OrderAdapter(emptyList())
-                    Toast.makeText(this, "Đã xóa lịch sử đơn hàng", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Order history has been deleted", Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("Hủy", null)
+                .setNegativeButton("Cancel", null)
                 .show()
         }
         initBottomMenu()

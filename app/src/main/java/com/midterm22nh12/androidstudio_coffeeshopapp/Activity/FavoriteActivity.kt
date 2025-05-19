@@ -24,28 +24,25 @@ class FavoriteActivity : AppCompatActivity() {
         initRecyclerView()
         loadFavoriteItems()
         initBottomMenu()
-        checkEmptyState() // Kiểm tra trạng thái rỗng ban đầu
+        checkEmptyState()
 
         binding.backBtnFavorite.setOnClickListener {
-            finish() // Đóng Activity hiện tại để quay lại màn hình trước đó
+            finish()
         }
     }
 
     override fun onResume() {
         super.onResume()
-        // Tải lại danh sách yêu thích mỗi khi Activity được resume
-        // để đảm bảo dữ liệu luôn được cập nhật (ví dụ: sau khi xóa item từ DetailActivity)
         loadFavoriteItems()
         checkEmptyState()
     }
 
     private fun initBottomMenu() {
+        binding.explorerBtn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
         binding.cartBtn.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
-        }
-        binding.favorBtn.setOnClickListener{
-
-            startActivity(Intent(this, FavoriteActivity::class.java))
         }
         binding.orderBtn.setOnClickListener{
             startActivity(Intent(this, MyOrderActivity::class.java))
@@ -57,8 +54,6 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         favoriteAdapter = FavoriteAdapter(favoriteItemsList, this) {
-            // Callback này được gọi từ FavoriteAdapter mỗi khi có thay đổi trong danh sách
-            // (ví dụ: sau khi một item được xóa)
             checkEmptyState()
         }
         binding.favoriteRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -67,7 +62,6 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun loadFavoriteItems() {
         val items = FavoriteItemManager.getFavoriteItems(this)
-        // Cập nhật danh sách trong adapter thay vì tạo mới
         favoriteAdapter.updateItems(items)
     }
 

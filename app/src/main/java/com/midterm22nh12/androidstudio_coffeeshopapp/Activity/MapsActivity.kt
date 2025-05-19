@@ -34,7 +34,7 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
 
         mMap.uiSettings.isZoomControlsEnabled = true
 
-        val defaultLocation = LatLng(16.047079, 108.206230) // Đà Nẵng
+        val defaultLocation = LatLng(16.047079, 108.206230)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12f))
 
         mMap.setOnMapClickListener { latLng ->
@@ -45,7 +45,7 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
             mMap.addMarker(
                 MarkerOptions()
                     .position(latLng)
-                    .title("Địa chỉ đã chọn")
+                    .title("Selected Location")
                     .snippet(address)
             )?.showInfoWindow()
 
@@ -75,11 +75,11 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
                     addr.countryName?.let { append(it) }
                 }
             } else {
-                "Không thể lấy địa chỉ chi tiết"
+                "Cannot get address"
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            "Không thể lấy địa chỉ chi tiết"
+            "Cannot get address"
         }
     }
 }

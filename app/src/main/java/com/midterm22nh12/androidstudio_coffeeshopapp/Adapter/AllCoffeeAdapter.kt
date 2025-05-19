@@ -16,13 +16,13 @@ class AllCoffeeAdapter(var items:MutableList<ItemsModel>):
 
     class Viewholder(val binding:ViewholderPopularBinding):RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllCoffeeAdapter.Viewholder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
         context=parent.context
         val binding=ViewholderPopularBinding.inflate(LayoutInflater.from(context), parent, false)
         return Viewholder(binding)
     }
 
-    override fun onBindViewHolder(holder: AllCoffeeAdapter.Viewholder, position: Int) {
+    override fun onBindViewHolder(holder: Viewholder, position: Int) {
         holder.binding.titleTxt.text=items[position].title
         holder.binding.priceTxt.text="$"+items[position].price.toString()
 

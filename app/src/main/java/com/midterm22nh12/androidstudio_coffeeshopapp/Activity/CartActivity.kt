@@ -25,7 +25,6 @@ class CartActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding= ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         managmentCart=ManagmentCart(this)
 
         calculateCart()

@@ -29,15 +29,12 @@ class OrderDetailActivity : AppCompatActivity() {
         binding = ActivityOrderDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Lấy danh sách sản phẩm
         val json = intent.getStringExtra("cartItems") ?: "[]"
         val type = object : TypeToken<ArrayList<ItemsModel>>() {}.type
         val cartItems: ArrayList<ItemsModel> = Gson().fromJson(json, type)
 
-        // Lấy thời gian từ intent
         orderTime = intent.getStringExtra("orderTime") ?: ""
 
-        // Thiết lập RecyclerView
         binding.orderDetailRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.orderDetailRecyclerView.adapter = CartAdapter(
             cartItems,
@@ -45,7 +42,6 @@ class OrderDetailActivity : AppCompatActivity() {
             readonly = true
         )
 
-        // Nút quay lại
         binding.backBtn.setOnClickListener { finish() }
 
         binding.cancelOrderBtn.setOnClickListener {
@@ -94,7 +90,6 @@ class OrderDetailActivity : AppCompatActivity() {
             binding.statusTxt.text = "Order Status: $statusText"
             binding.statusTxt.setTextColor(resources.getColor(statusColor, null))
 
-            // ✅ Cho phép hủy đơn hàng nếu đang chuẩn bị
             binding.cancelOrderBtn.isEnabled = diffMinutes < 1
             binding.cancelOrderBtn.alpha = if (diffMinutes < 1) 1f else 0.5f
 
@@ -108,7 +103,7 @@ class OrderDetailActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         if (::handler.isInitialized) {
-            handler.removeCallbacks(updateRunnable) // Ngừng cập nhật khi thoát
+            handler.removeCallbacks(updateRunnable)
         }
     }
 

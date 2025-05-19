@@ -6,8 +6,6 @@ import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
 
 object FavoriteItemManager {
 
-    // Key để lưu danh sách yêu thích trong TinyDB.
-    // Đảm bảo key này là duy nhất và không trùng với "CartList" hoặc các key khác.
     private const val FAVORITES_LIST_KEY = "FavoriteItemsListTinyDB"
 
     private fun getTinyDB(context: Context): TinyDB {
@@ -19,18 +17,13 @@ object FavoriteItemManager {
      * Trả về một ArrayList rỗng nếu không có item nào được lưu.
      */
     fun getFavoriteItems(context: Context): ArrayList<ItemsModel> {
-        // Sử dụng getListObject từ TinyDB của bạn
         return getTinyDB(context).getListObject(FAVORITES_LIST_KEY) ?: ArrayList()
-        // Lưu ý: TinyDB của bạn đã xử lý việc trả về ArrayList rỗng nếu key không tồn tại
-        // hoặc không parse được, dựa trên cách triển khai `getListObject`.
-        // Nếu `getListObject` có thể trả về null, bạn cần xử lý `?: ArrayList()`
     }
 
     /**
      * Lưu danh sách các ItemsModel yêu thích vào TinyDB.
      */
     private fun saveFavoriteItems(context: Context, favorites: ArrayList<ItemsModel>) {
-        // Sử dụng putListObject từ TinyDB của bạn
         getTinyDB(context).putListObject(FAVORITES_LIST_KEY, favorites)
     }
 
@@ -40,7 +33,6 @@ object FavoriteItemManager {
      */
     fun addFavoriteItem(context: Context, item: ItemsModel) {
         val favorites = getFavoriteItems(context)
-        // Kiểm tra xem item đã tồn tại trong danh sách yêu thích chưa (dựa trên title)
         if (!favorites.any { it.title == item.title }) {
             favorites.add(item)
             saveFavoriteItems(context, favorites)
@@ -56,7 +48,6 @@ object FavoriteItemManager {
     fun removeFavoriteItem(context: Context, itemTitle: String) {
         val favorites = getFavoriteItems(context)
         val initialSize = favorites.size
-        // Xóa item dựa trên title
         val removed = favorites.removeAll { it.title == itemTitle }
 
         if (removed) {
@@ -81,7 +72,6 @@ object FavoriteItemManager {
      * Xóa toàn bộ danh sách yêu thích.
      */
     fun clearFavorites(context: Context) {
-        // Lưu một danh sách rỗng để xóa tất cả
         saveFavoriteItems(context, ArrayList())
         Log.d("FavoriteManager", "All favorites cleared.")
     }

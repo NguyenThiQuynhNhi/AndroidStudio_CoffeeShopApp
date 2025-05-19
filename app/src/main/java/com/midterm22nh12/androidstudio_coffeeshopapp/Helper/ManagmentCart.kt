@@ -3,8 +3,6 @@ package com.midterm22nh12.androidstudio_coffeeshopapp.Helper
 import android.content.Context
 import android.widget.Toast
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
-import com.midterm22nh12.androidstudio_coffeeshopapp.Helper.ChangeNumberItemsListener
-import com.midterm22nh12.androidstudio_coffeeshopapp.Helper.TinyDB
 
 
 class ManagmentCart(val context: Context) {

@@ -32,19 +32,16 @@ class CartAdapter(
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         val item = listItemSelected[position]
 
-        // Thiết lập dữ liệu hiển thị
         holder.binding.titleTxt.text = item.title
         holder.binding.feeEachItem.text = "$${String.format("%.2f", item.price)}"
         holder.binding.totalEachItem.text = "$${String.format("%.2f", item.price * item.numberInCart)}"
         holder.binding.numberItemTxt.text = item.numberInCart.toString()
 
-        // Load ảnh
         Glide.with(holder.itemView.context)
             .load(item.picUrl.firstOrNull() ?: "")
             .apply(RequestOptions().transform(CenterCrop()))
             .into(holder.binding.picCart)
 
-        // Ẩn/hiện nút theo chế độ readonly
         if (readonly) {
             holder.binding.plusEachItem.visibility = View.GONE
             holder.binding.minusEachItem.visibility = View.GONE

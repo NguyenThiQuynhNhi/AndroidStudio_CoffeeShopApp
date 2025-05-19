@@ -35,10 +35,9 @@ class OrderAdapter(private val orderList: List<OrderModel>) :
                 val context = holder.itemView.context
                 val intent = Intent(context, OrderDetailActivity::class.java)
 
-                // 🔁 Chuyển List<CartItem> thành chuỗi JSON để gửi qua Intent
                 val cartJson = Gson().toJson(order.cartItems)
                 intent.putExtra("cartItems", cartJson)
-                intent.putExtra("orderTime", order.time) // ✅ Gửi thời gian
+                intent.putExtra("orderTime", order.time)
                 context.startActivity(intent)
             }
         }

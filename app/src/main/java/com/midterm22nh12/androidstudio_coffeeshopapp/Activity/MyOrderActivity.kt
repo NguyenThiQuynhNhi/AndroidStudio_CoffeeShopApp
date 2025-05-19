@@ -55,6 +55,7 @@ class MyOrderActivity : AppCompatActivity() {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
+
     private fun loadOrders() {
         val sharedPrefs = getSharedPreferences("MyOrders", Context.MODE_PRIVATE)
         val json = sharedPrefs.getString("orderList", "[]")

@@ -43,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         binding.profileBtn.setOnClickListener{
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+        binding.orderBtn.setOnClickListener{
+            startActivity(Intent(this, MyOrderActivity::class.java))
+        }
     }
 
     private fun initBanner() {

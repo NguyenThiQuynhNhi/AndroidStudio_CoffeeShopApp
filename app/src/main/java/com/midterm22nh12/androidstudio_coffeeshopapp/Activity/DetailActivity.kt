@@ -1,89 +1,178 @@
 package com.midterm22nh12.androidstudio_coffeeshopapp.Activity
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.midterm22nh12.androidstudio_coffeeshopapp.Domain.ItemsModel
+import com.midterm22nh12.androidstudio_coffeeshopapp.Helper.FavoriteItemManager
 import com.midterm22nh12.androidstudio_coffeeshopapp.Helper.ManagmentCart
 import com.midterm22nh12.androidstudio_coffeeshopapp.R
-import com.midterm22nh12.androidstudio_coffeeshopapp.Activity.MainActivity
 import com.midterm22nh12.androidstudio_coffeeshopapp.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
-    lateinit var binding: ActivityDetailBinding
+    private lateinit var binding: ActivityDetailBinding
     private lateinit var item: ItemsModel
     private lateinit var managerCart: ManagmentCart
 
+    // 🆕 Biến mới
+    private var selectedSize: String? = null
+    private var basePrice: Double = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         managerCart = ManagmentCart(this)
-        bundle()
+
+        val receivedItem = intent.getSerializableExtra("object") as? ItemsModel
+        if (receivedItem == null) {
+            Toast.makeText(this, "Can't load product detail", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+        item = receivedItem
+        item.numberInCart = 1
+
+        loadItemDetails()
         initSizeList()
+        setupClickListeners()
+        updateFavoriteButtonState()
+    }
+
+    private fun loadItemDetails() {
+        binding.apply {
+            if (item.picUrl.isNotEmpty()) {
+                val imageNameToLoad = item.picUrl[0]
+                val resourceId = resources.getIdentifier(imageNameToLoad, "drawable", packageName)
+
+                Glide.with(this@DetailActivity)
+                    .load(if (resourceId != 0) resourceId else imageNameToLoad)
+                    .placeholder(R.drawable.americano)
+                    .into(picMain)
+            } else {
+                picMain.setImageResource(R.drawable.americano)
+            }
+
+            titleTxt.text = item.title
+            descriptionTxt.text = item.description
+            basePrice = item.price
+            priceTxt.text = "$${basePrice}"
+            ratingTxt.text = item.rating.toString()
+            numberItemTxt.text = item.numberInCart.toString()
+        }
     }
 
     private fun initSizeList() {
         binding.apply {
-            smallBtn.setOnClickListener {
-                smallBtn.setBackgroundResource(R.drawable.stroke_brown_bg)
-                mediumBtn.setBackgroundResource(0)
-                largeBtn.setBackgroundResource(0)
-            }
-            mediumBtn.setOnClickListener {
-                smallBtn.setBackgroundResource(0)
-                mediumBtn.setBackgroundResource(R.drawable.stroke_brown_bg)
-                largeBtn.setBackgroundResource(0)
-            }
-            largeBtn.setOnClickListener {
-                smallBtn.setBackgroundResource(0)
-                mediumBtn.setBackgroundResource(0)
-                largeBtn.setBackgroundResource(R.drawable.stroke_brown_bg)
+            // Mặc định bỏ chọn
+            smallBtn.setBackgroundResource(0)
+            mediumBtn.setBackgroundResource(0)
+            largeBtn.setBackgroundResource(0)
+
+            smallBtn.setOnClickListener { selectSize("S") }
+            mediumBtn.setOnClickListener { selectSize("M") }
+            largeBtn.setOnClickListener { selectSize("L") }
+        }
+    }
+
+    private fun selectSize(size: String) {
+        selectedSize = size
+
+        binding.apply {
+            when (size) {
+                "S" -> {
+                    smallBtn.setBackgroundResource(R.drawable.stroke_brown_bg)
+                    mediumBtn.setBackgroundResource(0)
+                    largeBtn.setBackgroundResource(0)
+                    priceTxt.text = "$%.2f".format(basePrice)
+                }
+                "M" -> {
+                    smallBtn.setBackgroundResource(0)
+                    mediumBtn.setBackgroundResource(R.drawable.stroke_brown_bg)
+                    largeBtn.setBackgroundResource(0)
+                    priceTxt.text = "$%.2f".format(basePrice + 0.5)
+                }
+                "L" -> {
+                    smallBtn.setBackgroundResource(0)
+                    mediumBtn.setBackgroundResource(0)
+                    largeBtn.setBackgroundResource(R.drawable.stroke_brown_bg)
+                    priceTxt.text = "$%.2f".format(basePrice + 1.0)
+                }
             }
         }
     }
 
-    private fun bundle() {
+    private fun setupClickListeners() {
         binding.apply {
-            item = intent.getSerializableExtra("object") as ItemsModel
-
-            Glide.with(this@DetailActivity)
-                .load(item.picUrl[0])
-                .into(binding.picMain)
-
-            titleTxt.text = item.title
-            descriptionTxt.text = item.description
-            priceTxt.text = "$${item.price}"
-            ratingTxt.text = item.rating.toString()
-
             addToCartBtn.setOnClickListener {
-                item.numberInCart = Integer.valueOf(
-                    numberItemTxt.text.toString()
-                )
+                if (selectedSize == null) {
+                    Toast.makeText(this@DetailActivity, "Please select a drink size!", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                try {
+                    val quantity = numberItemTxt.text.toString().toInt()
+                    item.numberInCart = quantity
+                } catch (e: NumberFormatException) {
+                    item.numberInCart = 1
+                }
+
+                item.price = when (selectedSize) {
+                    "S" -> basePrice
+                    "M" -> basePrice + 0.5
+                    "L" -> basePrice + 1.0
+                    else -> basePrice
+                }
+                item.selectedSize = selectedSize ?: ""
+
+
                 managerCart.insertItems(item)
+                Toast.makeText(this@DetailActivity, "'${item.title}' added from Favorite", Toast.LENGTH_SHORT).show()
+            }
+
+            favBtn.setOnClickListener {
+                toggleFavoriteStatus()
             }
 
             backBtn.setOnClickListener {
                 finish()
             }
 
-            plusCart.setOnClickListener{
-                numberItemTxt.text = (item.numberInCart + 1).toString()
-                item.numberInCart++
+            plusCart.setOnClickListener {
+                var currentQuantity = numberItemTxt.text.toString().toIntOrNull() ?: 1
+                currentQuantity++
+                numberItemTxt.text = currentQuantity.toString()
             }
 
-            minusBtn.setOnClickListener{
-                if (item.numberInCart > 1) {
-                    numberItemTxt.text = (item.numberInCart - 1).toString()
-                    item.numberInCart--
+            minusBtn.setOnClickListener {
+                var currentQuantity = numberItemTxt.text.toString().toIntOrNull() ?: 1
+                if (currentQuantity > 1) {
+                    currentQuantity--
+                    numberItemTxt.text = currentQuantity.toString()
                 }
+            }
+        }
+    }
+
+    private fun toggleFavoriteStatus() {
+        if (FavoriteItemManager.isFavorite(this, item.title)) {
+            FavoriteItemManager.removeFavoriteItem(this, item.title)
+            Toast.makeText(this, "'${item.title}' deleted from Favorite", Toast.LENGTH_SHORT).show()
+        } else {
+            FavoriteItemManager.addFavoriteItem(this, item)
+            Toast.makeText(this, "'${item.title}' deleted from Favorite", Toast.LENGTH_SHORT).show()
+        }
+        updateFavoriteButtonState()
+    }
+
+    private fun updateFavoriteButtonState() {
+        if (::binding.isInitialized) {
+            if (FavoriteItemManager.isFavorite(this, item.title)) {
+                binding.favBtn.setImageResource(R.drawable.heart_24)
+            } else {
+                binding.favBtn.setImageResource(R.drawable.favorite_24)
             }
         }
     }

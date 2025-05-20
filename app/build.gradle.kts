@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -59,7 +60,13 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.activity)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.firestore)
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+
+    // ViewModel và LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
     // Gson (JSON parsing)
     implementation("com.google.code.gson:gson:2.10.1")
@@ -73,4 +80,9 @@ dependencies {
     // Android Instrumented testing
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+
 }

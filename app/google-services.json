@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "170089724974",
+    "firebase_url": "https://androidstudio-coffeeshopapp-default-rtdb.firebaseio.com",
     "project_id": "androidstudio-coffeeshopapp",
     "storage_bucket": "androidstudio-coffeeshopapp.firebasestorage.app"
   },

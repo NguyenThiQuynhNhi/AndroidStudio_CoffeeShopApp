@@ -29,7 +29,6 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Xử lý lỗi: in thông báo lỗi và trả về danh sách rỗng
                 println("Firebase error: ${error.message}")
                 listData.value = mutableListOf()
             }
@@ -53,7 +52,6 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Xử lý lỗi: in thông báo lỗi và trả về danh sách rỗng
                 println("Firebase error: ${error.message}")
                 listData.value = mutableListOf()
             }

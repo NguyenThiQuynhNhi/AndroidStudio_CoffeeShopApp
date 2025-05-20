@@ -1,5 +1,7 @@
 package com.midterm22nh12.androidstudio_coffeeshopapp.Activity
 
+import com.midterm22nh12.androidstudio_coffeeshopapp.Activity.CheckoutActivity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,13 +25,28 @@ class CartActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding= ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         managmentCart=ManagmentCart(this)
 
         calculateCart()
         setVariable()
         initCartList()
+        initBottomMenu()
+    }
 
+    private fun initBottomMenu() {
+        binding.explorerBtn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+        binding.favorBtn.setOnClickListener({
+
+          startActivity(Intent(this, FavoriteActivity::class.java))
+        })
+        binding.orderBtn.setOnClickListener{
+            startActivity(Intent(this, MyOrderActivity::class.java))
+        }
+        binding.profileBtn.setOnClickListener{
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 
     private fun initCartList() {
@@ -50,8 +67,22 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun setVariable() {
-        binding.backBtn.setOnClickListener{ finish() }
+        binding.backBtn.setOnClickListener { finish() }
+
+        binding.paymentBtn.setOnClickListener {
+            val total = Math.round((managmentCart.getTotalFee() + tax + 15) * 100) / 100.0
+            val intent = Intent(this, CheckoutActivity::class.java)
+            intent.putExtra("totalAmount", total)
+
+            // 🆕 Gửi danh sách CartItem dưới dạng JSON
+            val cartList = managmentCart.getListCart()
+            val cartJson = com.google.gson.Gson().toJson(cartList)
+            intent.putExtra("cartItems", cartJson)
+
+            startActivity(intent)
+        }
     }
+
 
     private fun calculateCart() {
         val percentTax=0.02

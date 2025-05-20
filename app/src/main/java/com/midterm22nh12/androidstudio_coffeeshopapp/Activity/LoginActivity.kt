@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
             val pass = loginPassword.text.toString().trim()
 
             if (email.isEmpty() || pass.isEmpty()) {
-                Toast.makeText(this, "Vui lòng nhập đầy đủ email và mật khẩu", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     } else {
-                        Toast.makeText(this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Login Fail", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
@@ -72,38 +72,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         forgotPassword.setOnClickListener {
-//            val builder = AlertDialog.Builder(this)
-//            val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_forgot, null)
-//            val emailBox = dialogView.findViewById<EditText>(R.id.emailBox)
-//
-//            builder.setView(dialogView)
-//            val dialog = builder.create()
-//
-//            dialogView.findViewById<Button>(R.id.btnReset).setOnClickListener {
-//                val userEmail = emailBox.text.toString()
-//
-//                if (TextUtils.isEmpty(userEmail) || !Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
-//                    Toast.makeText(this, "Enter your registered email id", Toast.LENGTH_SHORT).show()
-//                    return@setOnClickListener
-//                }
-//
-//                auth.sendPasswordResetEmail(userEmail)
-//                    .addOnCompleteListener { task ->
-//                        if (task.isSuccessful) {
-//                            Toast.makeText(this, "Check your email", Toast.LENGTH_SHORT).show()
-//                            dialog.dismiss()
-//                        } else {
-//                            Toast.makeText(this, "Unable to send, failed", Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//            }
-//
-//            dialogView.findViewById<Button>(R.id.btnCancel).setOnClickListener {
-//                dialog.dismiss()
-//            }
-//
-//            dialog.window?.setBackgroundDrawable(ColorDrawable(0))
-//            dialog.show()
             startActivity(Intent(this, ForgotPassActivity::class.java))
         }
 

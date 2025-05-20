@@ -22,7 +22,6 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
-    // 🏪 Tọa độ quán cố định: 54 Nguyễn Lương Bằng, Đà Nẵng
     private val storeLocation = LatLng(16.072035, 108.149180)
 
     private var selectedLatLng: LatLng? = null
@@ -50,7 +49,7 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
                 setResult(RESULT_OK, resultIntent)
                 finish()
             } else {
-                Toast.makeText(this, "Vui lòng chọn vị trí giao hàng", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please select address!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -59,16 +58,13 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
 
-        // 📍 Đưa camera đến địa chỉ quán cà phê
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(storeLocation, 14f))
 
-        // ✅ Khi người dùng chọn địa điểm
         mMap.setOnMapClickListener { latLng ->
             mMap.clear()
 
             val address = getAddressFromLatLng(latLng.latitude, latLng.longitude)
 
-            // Tính khoảng cách từ quán đến nơi chọn
             distanceKm = calculateDistanceInKm(storeLocation, latLng)
 
             selectedLatLng = latLng
@@ -77,13 +73,12 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
             mMap.addMarker(
                 MarkerOptions()
                     .position(latLng)
-                    .title("Địa chỉ đã chọn")
+                    .title("Selected Location")
                     .snippet(address)
             )?.showInfoWindow()
 
-            // Hiển thị địa chỉ và khoảng cách
             findViewById<TextView>(R.id.addressText).text =
-                "$address\n📏 Khoảng cách: %.2f km".format(distanceKm)
+                "$address\n📏 Distance: %.2f km".format(distanceKm)
         }
     }
 
@@ -102,11 +97,11 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback {
                     addr.countryName?.let { append(it) }
                 }
             } else {
-                "Không thể lấy địa chỉ chi tiết"
+                "Cannot find address"
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            "Không thể lấy địa chỉ"
+            "Cannot find address"
         }
     }
 

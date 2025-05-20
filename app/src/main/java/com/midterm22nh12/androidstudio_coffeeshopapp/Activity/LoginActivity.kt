@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
             val pass = loginPassword.text.toString().trim()
 
             if (email.isEmpty() || pass.isEmpty()) {
-                Toast.makeText(this, "Vui lòng nhập đầy đủ email và mật khẩu", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     } else {
-                        Toast.makeText(this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Login Fail", Toast.LENGTH_SHORT).show()
                     }
                 }
         }

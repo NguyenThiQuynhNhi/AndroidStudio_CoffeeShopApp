@@ -108,7 +108,7 @@ class DetailActivity : AppCompatActivity() {
         binding.apply {
             addToCartBtn.setOnClickListener {
                 if (selectedSize == null) {
-                    Toast.makeText(this@DetailActivity, "Vui lòng chọn size trước khi đặt hàng", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetailActivity, "Please select a drink size!", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
@@ -119,7 +119,6 @@ class DetailActivity : AppCompatActivity() {
                     item.numberInCart = 1
                 }
 
-                // Cập nhật giá theo size
                 item.price = when (selectedSize) {
                     "S" -> basePrice
                     "M" -> basePrice + 0.5
@@ -130,7 +129,7 @@ class DetailActivity : AppCompatActivity() {
 
 
                 managerCart.insertItems(item)
-                Toast.makeText(this@DetailActivity, "'${item.title}' đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DetailActivity, "'${item.title}' added from Favorite", Toast.LENGTH_SHORT).show()
             }
 
             favBtn.setOnClickListener {
@@ -160,10 +159,10 @@ class DetailActivity : AppCompatActivity() {
     private fun toggleFavoriteStatus() {
         if (FavoriteItemManager.isFavorite(this, item.title)) {
             FavoriteItemManager.removeFavoriteItem(this, item.title)
-            Toast.makeText(this, "'${item.title}' đã xóa khỏi yêu thích", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "'${item.title}' deleted from Favorite", Toast.LENGTH_SHORT).show()
         } else {
             FavoriteItemManager.addFavoriteItem(this, item)
-            Toast.makeText(this, "'${item.title}' đã thêm vào yêu thích", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "'${item.title}' deleted from Favorite", Toast.LENGTH_SHORT).show()
         }
         updateFavoriteButtonState()
     }

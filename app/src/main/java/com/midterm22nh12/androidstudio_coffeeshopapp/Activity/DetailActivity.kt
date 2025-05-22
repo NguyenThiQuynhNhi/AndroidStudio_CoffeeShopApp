@@ -129,7 +129,7 @@ class DetailActivity : AppCompatActivity() {
 
 
                 managerCart.insertItems(item)
-                Toast.makeText(this@DetailActivity, "'${item.title}' added from Favorite", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@DetailActivity, "'${item.title}' added from Favorite", Toast.LENGTH_SHORT).show()
             }
 
             favBtn.setOnClickListener {
